@@ -1,7 +1,9 @@
 import * as React from 'react'
 
-export default function CategoryContainer(){
+export default function CategoryContainer({ category }){
     return (
-        <div>Categories.</div>
+        <div>
+            <h1>{category.elements.title.value}</h1>
+        </div>
     )
 }

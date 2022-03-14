@@ -1,7 +1,79 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
 
 export default function RecentPosts(){
+    const data = useStaticQuery(graphql`
+        query{
+            allKontentItemExternalArticle(sort: {fields: elements___date___value}) {
+                nodes {
+                elements {
+                    title {
+                    value
+                    }
+                    date {
+                    value
+                    }
+                    host {
+                    value {
+                        name
+                    }
+                    }
+                }
+                system {
+                    id
+                    type
+                }
+            }
+            }
+            allKontentItemPost(sort: {fields: elements___date___value}) {
+                nodes {
+                elements {
+                    category {
+                    value {
+                        name
+                    }
+                    }
+                    date {
+                    value
+                    }
+                    title {
+                    value
+                    }
+                    topic {
+                    value {
+                        name
+                    }
+                    }
+                }
+                system {
+                    id
+                    type
+                }
+                }
+            }
+        }
+    `)
+
+    console.log(data)
+
+    const personalPosts = data.allKontentItemPost.nodes
+    const professionalPosts = data.allKontentItemExternalArticle.nodes
+    const recentPosts = professionalPosts.concat(personalPosts)
+
+    recentPosts.sort((pro, per) => pro.elements.date.value - per.elements.date.value).reverse()
+    const latest = recentPosts.slice(0,3)
+
     return (
-        <div>Recent Posts</div>
+        <div>
+            <h1>Recent Posts</h1>
+            {latest &&
+                latest.map(post =>(
+                    <div key={post.system.id}>
+                        {post.elements.title.value}
+                    </div>
+                    )
+                )
+            }
+        </div>
     )
 }
