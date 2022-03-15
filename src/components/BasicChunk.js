@@ -1,12 +1,15 @@
-import * as React from 'react'
+import React from 'react'
+import RichTextComponent from './RichTextComponent'
 
 export default function BasicChunk({ chunk }){
     const header = chunk.elements.header.value
-    const body = chunk.elements.body.value
+    const body = chunk.elements.body
     return (
         <>
             <h1>{header}</h1>
-            <p>{body}</p>
+            <RichTextComponent
+                richTextElement={body}
+            />
         </>
     )
 }

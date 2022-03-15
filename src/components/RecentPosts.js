@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import * as React from 'react'
+import React from 'react'
+
+import PostCard from './PostCard'
 
 export default function RecentPosts(){
     const data = useStaticQuery(graphql`
@@ -34,7 +36,7 @@ export default function RecentPosts(){
                     }
                     }
                     date {
-                    value
+                        value(formatString: "MMMM Do, YYYY")
                     }
                     title {
                     value
@@ -54,8 +56,6 @@ export default function RecentPosts(){
         }
     `)
 
-    console.log(data)
-
     const personalPosts = data.allKontentItemPost.nodes
     const professionalPosts = data.allKontentItemExternalArticle.nodes
     const recentPosts = professionalPosts.concat(personalPosts)
@@ -67,9 +67,9 @@ export default function RecentPosts(){
         <div>
             <h1>Recent Posts</h1>
             {latest &&
-                latest.map(post =>(
+                latest.map((post) =>(
                     <div key={post.system.id}>
-                        {post.elements.title.value}
+                        <PostCard post={post}/>
                     </div>
                     )
                 )
