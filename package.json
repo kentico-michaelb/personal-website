@@ -15,8 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@kentico/gatsby-kontent-components": "^8.0.0",
     "@kentico/gatsby-source-kontent": "^8.0.0",
     "gatsby": "^4.9.2",
+    "gatsby-plugin-image": "^2.9.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
