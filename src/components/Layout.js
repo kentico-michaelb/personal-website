@@ -23,7 +23,6 @@ export default function Layout({ children }){
         }
     `)
     const whoAmI = data.kontentItemChunk
-    const categories = data.allKontentItemCategory
     return (
         <main style={{ width:'100%', backgroundColor:'#F8F8F8'}}>
             <Hero />
