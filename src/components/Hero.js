@@ -1,51 +1,12 @@
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 import { ImageElement } from "@kentico/gatsby-kontent-components"
+import { useAllOverviewHero } from '../hooks/use-all-overview-hero'
 
-export default function Hero({ elements }) {
-    const data = useStaticQuery(graphql`
-    query{
-        allKontentItemOverview {
-            nodes {
-            elements {
-                hero {
-                value {
-                    ... on kontent_item_hero {
-              elements {
-                background_image {
-                  value {
-                    url
-                    description
-                    height
-                    name
-                    size
-                    width
-                  }
-                  name
-                  type
-                }
-                logo {
-                  value {
-                    url
-                    description
-                    height
-                    name
-                    size
-                    width
-                  }
-                }
-              }
-            }
-                }
-                }
-            }
-            }
-        }
-    }
-    `);
+export default function Hero() {
+    const allKontentItemOverview = useAllOverviewHero()
 
-    const hero = data.allKontentItemOverview.nodes[0].elements.hero.value[0]
+    const hero = allKontentItemOverview.nodes[0].elements.hero.value[0]
     const banner = hero.elements.background_image.value[0]
     const logo = hero.elements.logo.value[0]
 

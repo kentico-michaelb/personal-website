@@ -1,101 +1,11 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import CompanyCard from "./CompanyCard";
+import EmploymentCard from "./EmploymentCard";
+import { useAllEmployer } from "../hooks/use-all-employer";
 
 export default function Employment(){
-    const data = useStaticQuery(graphql`
-        query{
-            allKontentItemEmployer {
-                nodes {
-                system {
-                    codename
-                    id
-                    type
-                }
-                elements {
-                    company {
-                    value {
-                        ... on kontent_item_company {
-                        id
-                        system {
-                            codename
-                            id
-                            type
-                        }
-                        elements {
-                            name{
-                                value
-                            }
-                            logo {
-                            value {
-                                system {
-                                codename
-                                id
-                                type
-                                }
-                                ... on kontent_item_media {
-                                id
-                                system {
-                                    codename
-                                    id
-                                    type
-                                }
-                                elements {
-                                    alt {
-                                    value
-                                    }
-                                    asset {
-                                    value {
-                                        description
-                                        height
-                                        name
-                                        size
-                                        type
-                                        url
-                                        width
-                                    }
-                                    }
-                                }
-                                }
-                            }
-                            }
-                        }
-                        }
-                    }
-                    }
-                    positions {
-                    value {
-                        ... on kontent_item_position {
-                        id
-                        system {
-                            codename
-                            id
-                            type
-                        }
-                        elements {
-                            end_date {
-                            value(formatString: "MMMM YYYY")
-                            }
-                            skills {
-                            value
-                            }
-                            start_date {
-                            value(formatString: "MMMM YYYY")
-                            }
-                            title {
-                            value
-                            }
-                        }
-                        }
-                    }
-                    }
-                }
-                }   
-            }
-        }
-    `)
+    const allKontentItemEmployer  = useAllEmployer()
 
-    const employment = data.allKontentItemEmployer.nodes.map(emp => (emp.elements))
+    const employment = allKontentItemEmployer.nodes.map(emp => (emp.elements))
     const companies = employment.map(emp => {
         const job = {
             company: emp.company.value[0],
@@ -103,26 +13,22 @@ export default function Employment(){
         }
         return job
     })
-    // console.log(companies)
 
     return (
         <div>
-            <ul>
-                <li>
-                    {companies && 
-                        companies.map(emp => {
-                            return (
-                                <CompanyCard 
-                                    company={emp.company} 
-                                    positions={emp.positions} 
-                                   
-                                />
-                            )
-                        })
-                    }
-                    
-                </li>
-            </ul>
+            <div>
+                {companies && 
+                    companies.map(emp => {
+                        return (
+                            <EmploymentCard 
+                                company={emp.company} 
+                                positions={emp.positions}
+                                key={emp.company.system.id}
+                            />
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

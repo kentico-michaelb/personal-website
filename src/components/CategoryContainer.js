@@ -1,32 +1,13 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { Link } from 'gatsby'
+import { useAllCategory } from '../hooks/use-all-category'
 
 export default function CategoryContainer(){
-    const categories = useStaticQuery(graphql`
-    query{
-        allKontentItemCategory {
-                nodes {
-                    elements {
-                        title {
-                        value
-                        }
-                        url {
-                        value
-                        }
-                    }
-                    system {
-                        id
-                        type
-                        codename
-                    }
-                }
-        }
-    }
-    `)
+    const categories = useAllCategory()
     return (
         <div>
             {categories &&
-                categories.allKontentItemCategory.nodes.map(category => {
+                categories.nodes.map(category => {
                 return (
                     <Link to={`/${category.elements.url.value}`} key={category.system.id}>
                         <h1>{category.elements.title.value}</h1>

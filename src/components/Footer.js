@@ -1,57 +1,10 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 import FooterLinks from './FooterLinks'
+import { useAllCategoryLinks } from '../hooks/use-all-category-links'
 
 export default function Footer(){
-    const data = useStaticQuery(graphql`
-    query{
-        allKontentItemCategory {
-            nodes {
-            elements {
-                navigation_menu {
-                value {
-                    ... on kontent_item_anchor {
-                    id
-                    elements {
-                        label {
-                        value
-                        }
-                        value {
-                        value
-                        }
-                    }
-                    system {
-                        type
-                    }
-                    }
-                    ... on kontent_item_external_link {
-                    id
-                    elements {
-                        label {
-                        value
-                        }
-                        url {
-                        value
-                        }
-                    }
-                    system {
-                        type
-                    }
-                    }
-                }
-                }
-                title {
-                value
-                }
-            }
-            system {
-                id
-            }
-            }
-        }
-    }
-    `)
-    const categories = data.allKontentItemCategory.nodes
+    const allKontentItemCategory = useAllCategoryLinks()
+    const categories = allKontentItemCategory.nodes
     return (
         <>
             {categories &&
