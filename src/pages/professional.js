@@ -10,7 +10,6 @@ import RichTextComponent from "../components/RichTextComponent";
 
 const ProfessionalPage = ({data}) => {
     const content = data.kontentItemCategory.elements.content.value[0]
-//TODO: Misc. chunks can be dynamically added
     return (
         <Layout>
             <h1>{content.elements.title.value}</h1>
@@ -55,46 +54,7 @@ export const professionalQuery = graphql`
             }
             }
         }
-        navigation_menu {
-            value {
-            ... on kontent_item_anchor {
-                id
-                system {
-                codename
-                id
-                type
-                }
-                elements {
-                label {
-                    value
-                }
-                value {
-                    value
-                }
-                }
-            }
-            ... on kontent_item_external_link {
-                id
-                system {
-                codename
-                id
-                type
-                }
-                elements {
-                label {
-                    value
-                }
-                url {
-                    value
-                }
-                }
-            }
-            }
-        }
-        url {
-            value
-        }
-        }
+    }
     }
 }
 `
