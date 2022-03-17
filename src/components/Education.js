@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { useAllEducation } from '../hooks/use-all-education'
+import { ImageElement } from "@kentico/gatsby-kontent-components"
 
 export default function Education(){
     const allKontentItemEducation = useAllEducation()
@@ -27,7 +29,11 @@ export default function Education(){
             merits.map(merit => (
                 <div key={merit.id}>
                     <h4>{merit.establishment.elements.name.value}</h4>
-                    <div>IMG</div>
+                    <ImageElement 
+                        image={merit.establishment.elements.logo.value[0].elements.asset.value[0]}
+                        height='100'
+                        width='100'
+                    />
                     <div>{merit.achievement}</div>
                     <div>{merit.date}</div>
                 </div>
