@@ -7,9 +7,9 @@ export default function Media({ media }){
     return (
         <div>
             <ImageElement
-                    image={asset}
-                    alt={media.elements.alt.value ? media.elements.alt.value : asset.name}
-                />
+                image={asset}
+                alt={media.elements.alt.value ? media.elements.alt.value : asset.name}
+            />
             {media.elements.caption.value && 
                 <div>Caption: {media.elements.caption.value}</div>}
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { RichTextElement, ImageElement } from "@kentico/gatsby-kontent-components"
 import Media from './Media'
+import Hobby from './Hobby'
 
 export default function RichTextComponent({richTextElement}){
 return (
@@ -27,11 +28,14 @@ return (
         )
       }}
       resolveLinkedItem={linkedItem => {
-        if(linkedItem.system.type === 'media') {
-            // return <h1>{linkedItem.elements.title.value}</h1>
-            return <Media media={linkedItem} />    
-        }
-        return <pre>{JSON.stringify(linkedItem, undefined, 2)}</pre>
+        switch(linkedItem.system.type) {
+          case 'media':
+            return <Media media={linkedItem} />
+          case 'hobby':
+            return <Hobby hobby={linkedItem} />  
+          default: 
+            return <pre>{JSON.stringify(linkedItem, undefined, 2)}</pre>
+      }
       }}
     //   resolveDomNode={(domNode, domToReact) => {
     //     if (domNode.name === "table") {
