@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ImageElement } from "@kentico/gatsby-kontent-components"
+import RichTextComponent from './RichTextComponent'
 
 export default function EmploymentCard({company, positions}){
     const logo = company.elements.logo.value[0].elements.asset.value[0]
@@ -22,6 +23,9 @@ export default function EmploymentCard({company, positions}){
                         <div>
                             {pos.elements.start_date.value} - {pos.elements.end_date.value ? pos.elements.end_date.value : 'current'}
                         </div>
+                        <RichTextComponent
+                            richTextElement={pos.elements.skills}
+                        />
                     </div>
                 ))}
         
