@@ -23,26 +23,4 @@ exports.createPages = async function ({ actions, graphql }) {
         context: { slug: slug },
       })
     })
-
-    // data.allKontentItemCategory.edges.forEach(edge => {
-    //   const slug = edge.node.elements.url.value
-    //   actions.createPage({
-    //     path: `/${slug}`,
-    //     component: require.resolve(`./src/templates/category.js`),
-    //     context: { slug: slug },
-    //   })
-    // })
-
-    // REMOVED QUERY FOR PAGE REFACTOR
-            // allKontentItemCategory {
-        //   edges {
-        //     node {
-        //       elements {
-        //         url {
-        //           value
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
   }

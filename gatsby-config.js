@@ -21,6 +21,12 @@ module.exports = {
             ],
           },
         },
-        `gatsby-plugin-image`
+        `gatsby-plugin-image`,
+        {
+          resolve: `gatsby-plugin-postcss`,
+          options: {
+            postCssPlugins: [require("tailwindcss"), require("autoprefixer")]
+          }
+        },
       ],
 }

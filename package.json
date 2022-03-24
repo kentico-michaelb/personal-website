@@ -17,9 +17,13 @@
   "dependencies": {
     "@kentico/gatsby-kontent-components": "^8.0.0",
     "@kentico/gatsby-source-kontent": "^8.0.0",
+    "autoprefixer": "^10.4.4",
     "gatsby": "^4.9.2",
     "gatsby-plugin-image": "^2.9.1",
+    "gatsby-plugin-postcss": "^5.10.0",
+    "postcss": "^8.4.12",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "tailwindcss": "^3.0.23"
   }
 }
