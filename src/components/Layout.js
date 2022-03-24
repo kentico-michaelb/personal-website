@@ -7,7 +7,7 @@ import BasicChunk from './BasicChunk';
 import CategoryContainer from './CategoryContainer';
 import RecentPosts from './RecentPosts';
 
-export default function Layout({ children }){
+export default function Layout({ children, showWhoChunk = true}){
     const data = useStaticQuery(graphql`
         query{
             kontentItemChunk(system: {codename: {eq: "who_am_i"}}) {
@@ -24,13 +24,15 @@ export default function Layout({ children }){
     `)
     const whoAmI = data.kontentItemChunk
     return (
-        <main style={{ width:'100%', backgroundColor:'#F8F8F8'}}>
+        <main className='bg-custom-canvas-gray w-full'>
             <Hero />
-            <div className='container' style={{ margin:'auto', width:1366 }}>
-                <BasicChunk chunk={whoAmI} />
-                <CategoryContainer />
-                { children }
-                <RecentPosts />
+            <div className='flex justify-center'>
+                <div className='lg:px-28 xl:px-64'>
+                    {showWhoChunk && <BasicChunk chunk={whoAmI} />}
+                    <CategoryContainer />
+                    { children }
+                    <RecentPosts />
+                </div>
             </div>
             <Footer />
         </main>

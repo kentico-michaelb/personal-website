@@ -22,6 +22,7 @@ module.exports = {
           },
         },
         `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`,
         {
           resolve: `gatsby-plugin-postcss`,
           options: {

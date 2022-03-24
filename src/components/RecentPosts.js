@@ -16,14 +16,18 @@ export default function RecentPosts(){
     return (
         <div>
             <h1>Recent Posts</h1>
-            {latest &&
-                latest.map((post) =>(
-                    <div key={post.system.id}>
-                        <PostCard post={post}/>
-                    </div>
+                <div className='grid lg:grid-cols-3 lg:gap-8 justify-items-center'>
+                {latest &&
+                    latest.map((post) =>(
+                        <div key={post.system.id}
+                        className='lg:col-span-1'
+                        >
+                            <PostCard post={post}/>
+                        </div>
+                        )
                     )
-                )
-            }
+                }
+                </div>
         </div>
     )
 }

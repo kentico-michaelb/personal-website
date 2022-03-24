@@ -11,17 +11,16 @@ export default function Hero() {
     const logo = hero.elements.logo.value[0]
 
     return (
-        <div style={{margin:'auto', backgroundColor: '#393E46'}}>
+        <div className='flex justify-center bg-custom-dark-gray relative'>
             <ImageElement 
                 image={logo} 
                 height='160'
                 width='248'
-                style={{zIndex:'1', position:'absolute', margin: 20}} 
+                className='z-10 md:absolute left-0 w-64 ml-5 mt-5'
             />
             <ImageElement 
-                image={banner} 
-                width='1366'
-                height='500'
+                image={banner}
+                className='hidden md:block'
             />
         </div>
     )

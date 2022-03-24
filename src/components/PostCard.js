@@ -15,12 +15,22 @@ export default function PostCard({ post }){
     
 
     return (
-        <div>
-            <Media media={image} />
-            <span>{title}</span>
-            <span>{date}</span>
-            <span>#{tags && tags}</span>
-            <button>Read More</button>
+        <div className='w-72 h-72 xl:w-80 xl:h-96 bg-custom-dark-gray text-white border relative mb-4'>
+            <div className='h-32 xl:h-48 flex justify-center items-center overflow-hidden'>
+                <Media media={image} />
+            </div>
+            <div className='p-3'>
+                <div className='border-b border-custom-yellow'>
+                    <span>{title}</span>
+                </div>
+                <div className='text-xs pt-2'>{date}</div>
+                <div className='text-sm pt-2 uppercase'>
+                    <span className='text-custom-yellow'>#</span>{tags}
+                </div>
+                <button className='text-sm text-custom-dark-gray bg-custom-yellow px-2 py-1 absolute bottom-0 left-0 mb-4 ml-4 hover:drop-shadow-md'>
+                    Read More
+                </button>
+            </div>
         </div>
     )
 }
