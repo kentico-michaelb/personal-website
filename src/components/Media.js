@@ -10,11 +10,8 @@ export default function Media({ media }){
                 image={asset}
                 alt={media.elements.alt.value ? media.elements.alt.value : asset.name}
             />
-            {media.elements.caption.value && 
-                <div>Caption: {media.elements.caption.value}</div>}
-
-            {media.elements.caption.value && 
-                <div>Credit: {media.elements.caption.value}</div>}
+                <div>{media.elements.caption?.value}</div>
+                <div>{media.elements.credit?.value}</div>
         </div>
     )
 }
