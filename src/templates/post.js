@@ -1,219 +1,255 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import RichTextComponent from "../components/RichTextComponent"
+import Media from "../components/Media"
+import References from "../components/References"
 
 export default function Post({ data }) {
   const title = data.kontentItemPost.elements.title.value
+  const date = data.kontentItemPost.elements.date.value
+  const intro = data.kontentItemPost.elements.introduction.value
+  const media = data.kontentItemPost.elements.image.value[0]
+  const body = data.kontentItemPost.elements.body
+  const references = data.kontentItemPost.elements.references
+
   return (
-    <Layout>
+    <Layout showWhoChunk={false}>
       <div>
         <h1>{title}</h1>
-        <h3>Date</h3>
+        <h3>{date}</h3>
         <div>
-          Intro Block
+          {intro}
         </div>
         <div>
-          IMG
+          <Media 
+            media={media}
+          />
         </div>
         <div>
-          body copy
+          <RichTextComponent
+            richTextElement={body}
+          />
         </div>
-        <div>
-          References.
-        </div>
+        <References references={references} />
       </div>
     </Layout>
   )
 }
 
 export const query = graphql`
-query{
-kontentItemPost(elements: {url: {value: {eq: "fourth-article-title"}}}) {
-    system {
-      codename
-      id
-      type
-    }
-    elements {
-      body {
-        value
+  query {
+    kontentItemPost(
+      elements: { url: { value: { eq: "fourth-article-title" } } }
+    ) {
+      system {
+        codename
+        id
+        type
       }
-      date {
-        value(formatString: "MMMM DD YYYY")
-      }
-      image {
-        value {
-          ... on kontent_item_media {
-            id
-            system {
-              codename
+      elements {
+        body {
+          value
+        }
+        date {
+          value(formatString: "MMMM DD YYYY")
+        }
+        image {
+          value {
+            ... on kontent_item_media {
               id
-              type
-            }
-            elements {
-              alt {
-                value
+              system {
+                codename
+                id
+                type
               }
-              caption {
-                value
-              }
-              credit {
-                value {
-                  ... on kontent_item_creator {
-                    id
-                    system {
-                      codename
+              elements {
+                alt {
+                  value
+                }
+                caption {
+                  value
+                }
+                credit {
+                  value {
+                    ... on kontent_item_creator {
                       id
-                      type
-                    }
-                    elements {
-                      first_name {
-                        value
+                      system {
+                        codename
+                        id
+                        type
                       }
-                      last_name {
-                        value
-                      }
-                      middle_name {
-                        value
+                      elements {
+                        first_name {
+                          value
+                        }
+                        last_name {
+                          value
+                        }
+                        middle_name {
+                          value
+                        }
                       }
                     }
                   }
                 }
-              }
-              title {
-                value
-              }
-              asset {
-                value {
-                  description
-                  height
-                  name
-                  size
-                  type
-                  url
-                  width
+                title {
+                  value
+                }
+                asset {
+                  value {
+                    description
+                    height
+                    name
+                    size
+                    type
+                    url
+                    width
+                  }
                 }
               }
             }
           }
         }
-      }
-      introduction {
-        value
-      }
-      references {
-        value {
-          ... on kontent_item_references {
-            id
-            system {
-              codename
+        introduction {
+          value
+        }
+        references {
+          value {
+            ... on kontent_item_references {
               id
-              type
-            }
-            elements {
-              date {
-                value(formatString: "MMMM DD YYYY")
+              system {
+                codename
+                id
+                type
               }
-              source {
-                value {
-                  ... on kontent_item_book {
-                    id
-                    elements {
-                      version {
-                        value
-                      }
-                      publisher {
-                        value {
-                          ... on kontent_item_company {
-                            id
-                            elements {
-                              name {
-                                value
+              elements {
+                date {
+                  value(formatString: "MMMM DD YYYY")
+                }
+                source {
+                  value {
+                    ... on kontent_item_book {
+                      id
+                      elements {
+                        version {
+                          value
+                        }
+                        publisher {
+                          value {
+                            ... on kontent_item_company {
+                              id
+                              elements {
+                                name {
+                                  value
+                                }
                               }
                             }
                           }
                         }
                       }
+                      system {
+                        codename
+                        id
+                        type
+                      }
                     }
-                    system {
-                      codename
+                    ... on kontent_item_journal {
                       id
-                      type
+                      elements {
+                        number {
+                          value
+                        }
+                        page_end {
+                          value
+                        }
+                        page_start {
+                          value
+                        }
+                        title {
+                          value
+                        }
+                        volume {
+                          value
+                        }
+                      }
+                      system {
+                        codename
+                        id
+                        type
+                      }
+                    }
+                    ... on kontent_item_website {
+                      id
+                      elements {
+                        title {
+                          value
+                        }
+                        url {
+                          value
+                        }
+                      }
+                      system {
+                        codename
+                        id
+                        type
+                      }
                     }
                   }
-                  ... on kontent_item_journal {
-                    id
-                    elements {
-                      number {
-                        value
-                      }
-                      page_end {
-                        value
-                      }
-                      page_start {
-                        value
-                      }
-                      title {
-                        value
-                      }
-                      volume {
-                        value
-                      }
-                    }
-                    system {
-                      codename
+                }
+                title {
+                  value
+                }
+                author {
+                  value {
+                    ... on kontent_item_creator {
                       id
-                      type
-                    }
-                  }
-                  ... on kontent_item_website {
-                    id
-                    elements {
-                      title {
-                        value
+                      system {
+                        codename
+                        id
+                        type
                       }
-                      url {
-                        value
+                      elements {
+                        first_name {
+                          value
+                        }
+                        last_name {
+                          value
+                        }
+                        middle_name {
+                          value
+                        }
                       }
-                    }
-                    system {
-                      codename
-                      id
-                      type
                     }
                   }
                 }
               }
-              title {
-                value
-              }
             }
           }
         }
-      }
-      seo__description {
-        value
-      }
-      seo__robots_follow {
-        value {
-          codename
+        seo__description {
+          value
         }
-      }
-      seo__robots_index {
-        value {
-          codename
+        seo__robots_follow {
+          value {
+            codename
+          }
         }
-      }
-      seo__title {
-        value
-      }
-      title {
-        value
-      }
-      url {
-        value
+        seo__robots_index {
+          value {
+            codename
+          }
+        }
+        seo__title {
+          value
+        }
+        title {
+          value
+        }
+        url {
+          value
+        }
       }
     }
   }
-}
-`
+`;
