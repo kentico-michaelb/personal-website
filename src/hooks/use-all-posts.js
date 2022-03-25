@@ -5,7 +5,7 @@ export const useAllPosts = () => {
       useStaticQuery(graphql`
         query {
           allKontentItemExternalArticle(
-            sort: { fields: elements___date___value }
+            sort: { fields: elements___date___value, order: DESC }
           ) {
             nodes {
               elements {
@@ -20,6 +20,39 @@ export const useAllPosts = () => {
                     name
                   }
                 }
+                image {
+                  value {
+                    system {
+                      codename
+                      id
+                      type
+                    }
+                    ... on kontent_item_media {
+                      id
+                      system {
+                        codename
+                        id
+                        type
+                      }
+                      elements {
+                        alt {
+                          value
+                        }
+                        asset {
+                          value {
+                            description
+                            height
+                            name
+                            size
+                            type
+                            url
+                            width
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
               system {
                 id
@@ -27,7 +60,9 @@ export const useAllPosts = () => {
               }
             }
           }
-          allKontentItemPost(sort: { fields: elements___date___value }) {
+          allKontentItemPost(
+            sort: { fields: elements___date___value, order: DESC }
+          ) {
             nodes {
               elements {
                 category {
