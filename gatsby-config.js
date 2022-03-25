@@ -24,6 +24,13 @@ module.exports = {
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         {
+          resolve: "gatsby-plugin-anchor-links",
+          options: {
+            duration:3000,
+            offset: -100
+          }
+        },
+        {
           resolve: `gatsby-plugin-postcss`,
           options: {
             postCssPlugins: [require("tailwindcss"), require("autoprefixer")]
