@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ImageElement } from "@kentico/gatsby-kontent-components"
 import { useAllOverviewHero } from '../hooks/use-all-overview-hero'
+import { Link } from 'gatsby'
 
 export default function Hero() {
     const allKontentItemOverview = useAllOverviewHero()
@@ -12,12 +13,14 @@ export default function Hero() {
 
     return (
         <div className='flex justify-center bg-custom-dark-gray relative'>
-            <ImageElement 
-                image={logo} 
-                height='160'
-                width='248'
-                className='z-10 md:absolute left-0 w-64 ml-5 mt-5'
-            />
+            <Link to='/'>
+                <ImageElement 
+                    image={logo} 
+                    height='160'
+                    width='248'
+                    className='z-10 md:absolute left-0 w-64 ml-5 mt-5'
+                />
+            </Link>
             <ImageElement 
                 image={banner}
                 className='hidden md:block'
