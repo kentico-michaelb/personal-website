@@ -1,23 +1,35 @@
 import React from "react"
-import { graphql } from 'gatsby';
+import { graphql } from "gatsby";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import Layout from "../components/Layout"
 import Posts from "../components/Posts";
 import BasicChunk from "../components/BasicChunk";
 
-const PersonalPage = ({data}) => {
+const PersonalPage = ({data}) => {   
     const content = data.kontentItemCategory.elements.content.value
     const chunks = content.filter(item => (item.system.type === 'chunk'))
 
     return (
         <Layout>
+          <div className="bg-white border-1 pt-1 pb-3.5 border-1  z-0 relative">
             <h1>Personal Blog</h1>
-            <Posts type={'personal'}/>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center">
+                <Posts type={'personal'}/>
+            </div>
             {chunks &&
                 chunks.map(chunk => {
                 return <BasicChunk chunk={chunk} key={chunk.system.id}/>
                 })  
             }
+            <div className="w-full flex justify-center justify-items-center z-10 absolute">
+              <AnchorLink to="/personal#personal"
+                stripHash              
+                className='text-sm font-semibold text-custom-dark-gray bg-custom-yellow top-0 px-6 py-1 hover:drop-shadow-md'>
+                Back to top &uarr;
+              </AnchorLink>
+            </div>
+          </div>
         </Layout>
     )
     }

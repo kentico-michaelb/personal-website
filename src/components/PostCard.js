@@ -27,7 +27,7 @@ export default function PostCard({ post }){
                 <div className='text-sm pt-2 uppercase'>
                     <span className='text-custom-yellow'>#</span>{tags}
                 </div>
-                <button className='text-sm text-custom-dark-gray bg-custom-yellow px-2 py-1 absolute bottom-0 left-0 mb-4 ml-4 hover:drop-shadow-md'>
+                <button className='text-sm font-semibold text-custom-dark-gray bg-custom-yellow px-2 py-1 absolute bottom-0 left-0 mb-4 ml-4 hover:drop-shadow-md'>
                     Read More
                 </button>
             </div>

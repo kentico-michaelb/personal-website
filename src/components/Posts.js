@@ -14,11 +14,13 @@ export default function Posts({ type }){
     }
     
     return (
-        <div>
+        <>
             {posts &&
                 posts.map(post => (
-                    <PostCard post={post} key={post.system.id}/>
+                    <div key={post.system.id}>
+                        <PostCard post={post} key={post.system.id}/>
+                    </div>
                 ))}
-        </div>
+        </>
     )
 }
