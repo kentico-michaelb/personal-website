@@ -15,19 +15,23 @@ export default function Employment(){
     })
 
     return (
-        <div>
-            <div>
-                {companies && 
-                    companies.map(emp => {
-                        return (
-                            <EmploymentCard 
-                                company={emp.company} 
-                                positions={emp.positions}
-                                key={emp.company.system.id}
-                            />
-                        )
-                    })
-                }
+        <div className="flex justify-center mt-4">
+            <div className="grid grid-cols-2 w-8/12">
+                <h2 className="text-4xl text-custom-dark-gray uppercase">Employment</h2>
+                <h2 className="text-4xl text-custom-dark-gray uppercase">Skills in Position</h2>
+                <div className="col-span-2">
+                    {companies && 
+                        companies.map(emp => {
+                            return (
+                                <EmploymentCard 
+                                    company={emp.company} 
+                                    positions={emp.positions}
+                                    key={emp.company.system.id}
+                                />
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )
