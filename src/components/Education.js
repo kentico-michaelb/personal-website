@@ -24,20 +24,23 @@ export default function Education(){
     })
 
     return (
-        <div>
-        {merits &&
-            merits.map(merit => (
-                <div key={merit.id}>
-                    <h4>{merit.establishment.elements.name.value}</h4>
-                    <ImageElement 
-                        image={merit.establishment.elements.logo.value[0].elements.asset.value[0]}
-                        height='100'
-                        width='100'
-                    />
-                    <div>{merit.achievement}</div>
-                    <div>{merit.date}</div>
-                </div>
-                ))}
-        </div> 
+        <>
+            <h1>Education</h1>
+            <div className="flex justify-center text-center mb-4">
+                {merits &&
+                    merits.map(merit => (
+                        <div key={merit.id}>
+                            <h2>{merit.establishment.elements.name.value}</h2>
+                            <ImageElement 
+                                image={merit.establishment.elements.logo.value[0].elements.asset.value[0]}
+                                height='100'
+                                width='100'
+                            />
+                            <h4>{merit.achievement}</h4>
+                            <h4>{merit.date}</h4>
+                        </div>
+                        ))}
+            </div> 
+        </>
     )
 }
