@@ -5,11 +5,8 @@ import BasicChunk from "../components/BasicChunk"
 import Layout from "../components/Layout"
 
 const IndexPage = ({data}) => {
-  const content = data.allKontentItemOverview.nodes[0].elements.content.value
-  //Who Am I is included in Layout
-  const chunks = content.filter(item => (item.system.codename !=='who_am_i'))
+  const chunks = data.allKontentItemOverview.nodes[0].elements.content.value
 
-  //Misc. chunks can be dynamically added
   return (
     <Layout>
       {chunks &&
