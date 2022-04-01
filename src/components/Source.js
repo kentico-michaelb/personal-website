@@ -7,11 +7,11 @@ export default function Source({ source }){
                 return (
                     <div>
                         {source.elements.publisher.value.map(pub => (
-                            <span key={source.system.id}>{pub.elements.name.value}</span>
+                            <span key={source.system.id}>{pub.elements.name.value},&nbsp;</span>
                         ))}
 
                         {source.elements.version.value && 
-                            <div>version {source.elements.version.value}</div>}
+                            <span>version {source.elements.version.value}</span>}
                     </div>
                 )
             //Exploring the Conceptualization of Augmented Reality and its Implications for the User in the Field of Library and Information Science.” 
@@ -20,16 +20,10 @@ export default function Source({ source }){
                 return (
                     <div>
                         <div>
-                            {source.elements.title.value}
-                        </div>
-                        <div>
-                            {source.elements.volume.value}
-                        </div>
-                        <div>
-                            {source.elements.number.value}
-                        </div>
-                        <div>
-                            {source.elements.page_start.value} - {source.elements.page_end.value} 
+                            {source.elements.title.value},&nbsp; 
+                            {source.elements.volume.value},&nbsp;
+                            {source.elements.number.value},&nbsp;
+                            pp. {source.elements.page_start.value} - {source.elements.page_end.value} 
                         </div>
                     </div>
                 )
