@@ -10,7 +10,9 @@ export default function Media({ media }){
                 image={asset}
                 alt={media.elements.alt.value ? media.elements.alt.value : asset.name}
             />
-                <div>{media.elements.caption?.value}</div>
+                <h2 className='bg-custom-light-gray text-custom-dark-gray'>
+                    {media.elements.caption?.value}
+                </h2>
                 <div>{media.elements.credit?.value}</div>
         </div>
     )

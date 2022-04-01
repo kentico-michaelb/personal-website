@@ -14,13 +14,13 @@ export default function Posts({ type }){
     }
     
     return (
-        <>
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center">
             {posts &&
                 posts.map(post => (
                     <div key={post.system.id}>
                         <PostCard post={post} key={post.system.id}/>
                     </div>
                 ))}
-        </>
+        </div>
     )
 }

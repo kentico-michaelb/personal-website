@@ -14,9 +14,9 @@ export default function RecentPosts(){
     const latest = recentPosts.slice(0,3)
 
     return (
-        <div>
+        <div className='mt-8'>
             <h1>Recent Posts</h1>
-                <div className='grid lg:grid-cols-3 lg:gap-8 justify-items-center'>
+                <div className='grid md:grid-cols-3 lg:grid-cols-3 lg:gap-8 justify-items-center'>
                 {latest &&
                     latest.map((post) =>(
                         <div key={post.system.id}

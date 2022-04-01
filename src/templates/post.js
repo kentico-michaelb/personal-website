@@ -14,19 +14,21 @@ export default function Post({ data }) {
   const references = data.kontentItemPost.elements.references
 
   return (
-    <Layout showWhoChunk={false}>
-      <div>
-        <h1>{title}</h1>
-        <h3>{date}</h3>
-        <div>
-          {intro}
-        </div>
-        <div>
+    <Layout home={false}>
+      <div className="bg-white pt-1">
+        <h1 className="px-8">{title}</h1>
+        <h2 className="text-center">{date}</h2>
+          <div className=" flex justify-center jusitfy-items-center">
+            <div className="w-full bg-custom-light-gray px-10 lg:px-40 m-4">
+              {intro}
+            </div>
+          </div>
+        <div className="flex justify-center p-8">
           <Media 
             media={media}
           />
         </div>
-        <div>
+        <div className="p-8">
           <RichTextComponent
             richTextElement={body}
           />
@@ -38,9 +40,9 @@ export default function Post({ data }) {
 }
 
 export const query = graphql`
-  query {
+  query PostsQuery($slug: String){
     kontentItemPost(
-      elements: { url: { value: { eq: "fourth-article-title" } } }
+      elements: { url: { value: { eq: $slug } } }
     ) {
       system {
         codename
