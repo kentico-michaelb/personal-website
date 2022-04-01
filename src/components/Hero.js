@@ -12,19 +12,19 @@ export default function Hero() {
     const logo = hero.elements.logo.value[0]
 
     return (
-        <div className='flex justify-center bg-custom-dark-gray relative'>
-            <Link to='/'>
+        <div className='flex justify-center bg-custom-black relative w-full'>
+            <Link to='/' title="Home" className='z-10 md:absolute left-0 w-64 ml-5 mt-5'>
                 <ImageElement 
                     image={logo} 
                     height='160'
                     width='248'
-                    className='z-10 md:absolute left-0 w-64 ml-5 mt-5'
                 />
             </Link>
-            <ImageElement 
-                image={banner}
-                className='hidden md:block'
-            />
+            <div className='hidden md:block relative'>
+                <ImageElement 
+                    image={banner}
+                />
+            </div>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import { RichTextElement, ImageElement } from "@kentico/gatsby-kontent-components"
 import Media from './Media'
 import Hobby from './Hobby'
+import ExternalLink from './ExternalLink'
 
 export default function RichTextComponent({richTextElement}){
 return (
@@ -33,6 +34,8 @@ return (
             return <Media media={linkedItem} />
           case 'hobby':
             return <Hobby hobby={linkedItem} />  
+          case 'external_link':
+            return <ExternalLink url={linkedItem.elements.url.value} label={linkedItem.elements.label.value} />
           default: 
             return <pre>{JSON.stringify(linkedItem, undefined, 2)}</pre>
       }

@@ -1,38 +1,33 @@
 import React from "react"
 import { graphql } from 'gatsby';
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 
-// import BasicChunk from "../components/BasicChunk"
 import Layout from "../components/Layout"
 import Employment from "../components/Employment";
 import Posts from "../components/Posts";
 import Education from "../components/Education";
 import RichTextComponent from "../components/RichTextComponent";
+import ScrollButton from "../components/ScrollButton";
 
 const ProfessionalPage = ({data}) => {
     const content = data.kontentItemCategory.elements.content.value[0]
     return (
-        <Layout>
+        <Layout home={false}>
             <div className="bg-white border-1 pt-1 pb-3.5 border-1  z-0 relative">
                 <h1>{content.elements.title.value}</h1>
-                <div className="flex jusifty-center items-center text-center lg:px-28 xl:px-60">
+                <div className="p-8 lg:px-28 xl:px-48" id="resume">
                     <RichTextComponent 
                         richTextElement={content.elements.mission}
                     />
                 </div>
                 <Employment />
+
                 <Education />
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center">
-                    <Posts type={'professional'}/>
-                </div>
+
+                <h1 id="articles">Professional Articles</h1>
+                <Posts type={'professional'}/>
                 
-                <div className="w-full flex justify-center justify-items-center z-10 absolute">
-                    <AnchorLink to="/professional#professional"
-                        stripHash              
-                        className='text-sm font-semibold text-custom-dark-gray bg-custom-yellow top-0 px-6 py-1 hover:drop-shadow-md'>
-                        Back to top &uarr;
-                    </AnchorLink>
-                </div>
+                <ScrollButton />
+
             </div>
         </Layout>
     )
@@ -56,6 +51,30 @@ export const professionalQuery = graphql`
                     link_id
                     type
                     url_slug
+                  }
+                  modular_content {
+                    id
+                    system {
+                      codename
+                      id
+                      type
+                    }
+                    ... on kontent_item_external_link {
+                      id
+                      system {
+                        codename
+                        id
+                        type
+                      }
+                      elements {
+                        label {
+                          value
+                        }
+                        url {
+                          value
+                        }
+                      }
+                    }
                   }
                 }
                 title {

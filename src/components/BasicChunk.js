@@ -6,7 +6,7 @@ export default function BasicChunk({ chunk }){
     const body = chunk.elements.body
     return (
         <div className='px-20'>
-            <h1>{header}</h1>
+            <h1 id={chunk.system.codename}>{header}</h1>
             <RichTextComponent
                 richTextElement={body}
             />
