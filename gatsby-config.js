@@ -14,7 +14,7 @@ module.exports = {
             projectId: `${process.env.KONTENT_PROJECT_ID}`,
             includeTaxonomies: true,
             includeTypes: true,
-            usePreviewUrl: true,
+            usePreviewUrl: `${process.env.KONTENT_PREVIEW_ENABLED}`,
             authorizationKey: `${process.env.KONTENT_PREVIEW_KEY}`,
             languageCodenames: [
               `default`,
@@ -23,10 +23,12 @@ module.exports = {
         },
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
+        `gatsby-plugin-transition-link`,
+        `gatsby-plugin-react-helmet`,
         {
           resolve: "gatsby-plugin-anchor-links",
           options: {
-            duration:3000,
+            duration:2000,
             offset: -100
           }
         },
