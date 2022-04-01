@@ -12,6 +12,11 @@ export const useAllPosts = () => {
                 title {
                   value
                 }
+                topic {
+                  value {
+                    name
+                  }
+                }
                 date {
                   value(formatString: "MMMM Do, YYYY")
                 }
@@ -53,6 +58,32 @@ export const useAllPosts = () => {
                     }
                   }
                 }
+                external_link {
+                  value {
+                    ... on kontent_item_external_link {
+                      id
+                      elements {
+                        label {
+                          value
+                        }
+                        url {
+                          value
+                        }
+                      }
+                      system {
+                        codename
+                        id
+                        type
+                      }
+                    }
+                  }
+                }
+                category {
+                  value {
+                    name
+                    codename
+                  }
+                }
               }
               system {
                 id
@@ -68,6 +99,7 @@ export const useAllPosts = () => {
                 category {
                   value {
                     name
+                    codename
                   }
                 }
                 date {
@@ -113,6 +145,9 @@ export const useAllPosts = () => {
                       }
                     }
                   }
+                }
+                url {
+                  value
                 }
               }
               system {
