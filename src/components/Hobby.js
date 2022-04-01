@@ -5,10 +5,10 @@ import RichTextComponent from './RichTextComponent'
 export default function Hobby({ hobby }){
         return (
             <div className='grid grid-cols-3 w-10/12 mt-8'>
-                <div className='flex justify-end mr-8'>
+                <div className='hidden md:flex md:justify-end md:mr-8'>
                     <Media media={hobby.elements.media.value[0]}/>
                 </div>
-                <div className='col-span-2'>
+                <div className='col-span-3 md:col-span-2'>
                     <h2 className='font-bold'>{hobby.elements.name.value}</h2>
                     <RichTextComponent
                         richTextElement={hobby.elements.description}
