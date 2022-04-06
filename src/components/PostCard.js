@@ -14,7 +14,7 @@ export default function PostCard({ post }){
     if (post.system.type === 'external_article'){
         const externalLink = post.elements.external_link.value[0].elements.url.value
         host = post.elements.host.value.map(host => (host.name))
-        url = <a href={externalLink} target="_blank" className='text-sm font-semibold text-custom-dark-gray no-underline btn' rel="noopener noreferrer">Read more {host && <span>on {host}</span>}</a>
+        url = <a href={externalLink} target="_blank" className='text-sm font-semibold text-custom-dark-gray no-underline btn' rel="noopener noreferrer">Read it {host && <span>on {host}</span>}</a>
     }
     else {
         const internalLink = `/posts/${post.elements.url.value}`
@@ -30,7 +30,7 @@ export default function PostCard({ post }){
     
 
     return (
-        <div className='w-72 h-96 bg-custom-dark-gray text-white border relative mb-4'>
+        <div className='w-72 h-96 bg-custom-dark-gray text-white border shadow-lg relative  mb-4'>
             <div className='h-40 flex justify-center items-center overflow-hidden'>
                 <Media media={image} />
             </div>

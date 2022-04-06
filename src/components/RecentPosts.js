@@ -10,7 +10,7 @@ export default function RecentPosts(){
     const professionalPosts = allKontentItemExternalArticle.nodes
     const recentPosts = professionalPosts.concat(personalPosts)
 
-    recentPosts.sort((pro, per) => pro.elements.date.value - per.elements.date.value).reverse()
+    recentPosts.sort((pro, per) => pro.elements.date.value - per.elements.date.value)
     const latest = recentPosts.slice(0,3)
 
     return (

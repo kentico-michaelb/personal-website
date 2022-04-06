@@ -20,12 +20,12 @@ export default function EmploymentCard({company, positions}){
                                         
                                     />
                                 </div>
-                                <h2>{company.elements.name.value}</h2>
+                                <h3 className='w-60'>{company.elements.name.value}</h3>
                                 {pos.elements.start_date.value} - {pos.elements.end_date.value ? pos.elements.end_date.value : 'current'}
                             </div>
                         <div className="col-span-2 lg:col-span-1 lg:col-start-2 lg:col-end-2 lg:mt-4">
-                            <h2>{pos.elements.title.value}</h2>
-                            <div className='p-2'>
+                            <h3>{pos.elements.title.value}</h3>
+                            <div className='p-4'>
                                 <RichTextComponent
                                     richTextElement={pos.elements.skills}
                                 />

@@ -16,19 +16,21 @@ export default function Post({ data }) {
   return (
     <Layout home={false}>
       <div className="bg-white pt-1">
-        <h1 className="px-8">{title}</h1>
-        <h2 className="text-center">{date}</h2>
+        <h1 className="px-16 no-underline capitalize">{title}</h1>
+        <hr className="w-3/4 m-auto border-2 border-custom-yellow"/>
+        <h3 className="text-center">{date}</h3>
           <div className=" flex justify-center jusitfy-items-center">
             <div className="w-full bg-custom-light-gray px-10 lg:px-40 m-4">
               {intro}
             </div>
           </div>
-        <div className="flex justify-center p-8">
+        <div className="flex justify-center p-8 h-1/4">
           <Media 
             media={media}
+            width={1000}
           />
         </div>
-        <div className="p-8">
+        <div className="ml-10 break-words w-10/12">
           <RichTextComponent
             richTextElement={body}
           />

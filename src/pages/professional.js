@@ -14,7 +14,7 @@ const ProfessionalPage = ({data}) => {
         <Layout home={false}>
             <div className="bg-white border-1 pt-1 pb-3.5 border-1  z-0 relative">
                 <h1>{content.elements.title.value}</h1>
-                <div className="p-8 lg:px-28 xl:px-48" id="resume">
+                <div className="px-16 lg:px-28 xl:px-48" id="resume">
                     <RichTextComponent 
                         richTextElement={content.elements.mission}
                     />

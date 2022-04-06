@@ -12,7 +12,7 @@ export default function Footer(){
             <div className='md:inline-flex leading-loose uppercase m-10'>
             {categories &&
                 categories.map(cat => (
-                    <div key={cat.system.id} className='mt-4 ml-10 w-full'>
+                    <div key={cat.system.id} className='mt-4 ml-14 w-full'>
                         <div className='text-white'>
                             {cat.elements.title.value}<span className='text-custom-yellow'>.</span>
                         </div>
@@ -26,7 +26,7 @@ export default function Footer(){
                     ))
             }
             </div>
-            <div className='md:right-0 m-10'>
+            <div className='md:right-0 mt-14'>
                 <Link to='/'>
                     <SubduedLogo />
                 </Link>

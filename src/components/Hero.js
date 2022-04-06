@@ -12,7 +12,7 @@ export default function Hero() {
     const logo = hero.elements.logo.value[0]
 
     return (
-        <div className='flex justify-center bg-custom-black relative w-full'>
+        <div className='flex justify-center bg-black relative w-full'>
             <Link to='/' title="Home" className='z-10 md:absolute left-0 w-64 ml-5 mt-5'>
                 <ImageElement 
                     image={logo} 
@@ -23,6 +23,7 @@ export default function Hero() {
             <div className='hidden md:block relative'>
                 <ImageElement 
                     image={banner}
+                    height={420}
                 />
             </div>
         </div>

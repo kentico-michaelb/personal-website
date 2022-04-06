@@ -29,13 +29,13 @@ export default function Education(){
             <div className="flex justify-center text-center mb-4">
                 {merits &&
                     merits.map(merit => (
-                        <div key={merit.id}>
-                            <h2>{merit.establishment.elements.name.value}</h2>
+                        <div key={merit.id} className="m-4 p-4 shadow-lg bg-custom-light-gray">
                             <ImageElement 
                                 image={merit.establishment.elements.logo.value[0].elements.asset.value[0]}
-                                height='100'
-                                width='100'
+                                height={100}
+                                width={100}
                             />
+                            <h3>{merit.establishment.elements.name.value}</h3>
                             <h4>{merit.achievement}</h4>
                             <h4>{merit.date}</h4>
                         </div>
