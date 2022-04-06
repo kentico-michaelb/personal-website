@@ -16,7 +16,7 @@ export default function FooterLinks({ links, category }){
             )}
             {externalLinks.map(item => (
                 <li key={item.id}>
-                    <a href={item.elements.url.value} target='_blank'>
+                    <a href={item.elements.url.value} target='_blank' rel="noreferrer">
                         {item.elements.label.value}
                     </a>
                 </li>
