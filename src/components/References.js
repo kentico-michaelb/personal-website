@@ -8,22 +8,20 @@ export default function References( { references }){
         <div className='flex justify-center p-4 flex-wrap'>
             {references.value.map((ref, index) => {
                 return (
-                    <div key={ref.system.id} className='flex border-2 bg-custom-light-gray m-4'>
-                        <div className='text-4xl flex items-center p-4'>
+                    <div key={ref.system.id} className='flex items-center h-72 border-2 bg-custom-light-gray m-4'>
+                        <div className='text-5xl flex items-center p-4'>
                             {index+1}
                         </div>
-                        <div className='w-80'>
+                        <div className='w-80 break-words p-4'>
                             {ref.elements.author.value.map(author => (
-                                <span key={author.system.id}>
+                                <span key={author.system.id} className='font-semibold'>
                                     {author.elements.first_name.value}
-                                    &nbsp;
-                                    {author.elements.middle_name.value && author.elements.middle_name.value}
+                                    
+                                    {author.elements.middle_name.value && <span>&nbsp; author.elements.middle_name.value</span>}
                                     &nbsp;
                                     {author.elements.last_name.value}
                                 </span>
                             ))}
-                        
-                            <div>{ref.elements.title.value}</div>
                             <div>
                                 {ref.elements.source.value.map(src => {
                                     return (

@@ -30,8 +30,8 @@ export default function Source({ source }){
             default:
                 return (
                     <div>
-                        <div>{source.elements.title.value}</div>
-                        <div>{source.elements.url.value}</div>
+                        <div className='italic'>{source.elements.title.value}</div>
+                        <a href={source.elements.url.value} target='_blank' rel="noreferrer">{source.elements.url.value}</a>
                     </div>
                 )
         }

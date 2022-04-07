@@ -15,12 +15,12 @@ export default function Post({ data }) {
 
   return (
     <Layout home={false}>
-      <div className="bg-white pt-1">
+      <div className="bg-white pt-1 w-screen">
         <h1 className="px-16 no-underline capitalize">{title}</h1>
         <hr className="w-3/4 m-auto border-2 border-custom-yellow"/>
         <h3 className="text-center">{date}</h3>
-          <div className=" flex justify-center jusitfy-items-center">
-            <div className="w-full bg-custom-light-gray px-10 lg:px-40 m-4">
+          <div className=" flex justify-center bg-custom-light-gray">
+            <div className="w-10/12 lg:w-7/12 m-4">
               {intro}
             </div>
           </div>
@@ -30,10 +30,12 @@ export default function Post({ data }) {
             width={1000}
           />
         </div>
-        <div className="ml-10 break-words w-10/12">
-          <RichTextComponent
-            richTextElement={body}
-          />
+        <div className="flex justify-center">
+          <div className="break-words w-10/12 lg:w-7/12">
+            <RichTextComponent
+              richTextElement={body}
+            />      
+          </div>
         </div>
         <References references={references} />
       </div>
@@ -120,7 +122,7 @@ export const query = graphql`
         }
         references {
           value {
-            ... on kontent_item_references {
+            ... on kontent_item_reference {
               id
               system {
                 codename
