@@ -8,7 +8,7 @@ export default function FooterLinks({ links, category }){
         <ul>
             {internalLinks.map(item => (
                 <li key={item.id}>
-                    <Link to={`/${category}#${item.elements.value.value}`}>
+                    <Link className='text-custom-yellow hover:text-custom-light-gray' to={`/${category}#${item.elements.value.value}`}>
                         {item.elements.label.value}
                     </Link>
                 </li>
@@ -16,7 +16,7 @@ export default function FooterLinks({ links, category }){
             )}
             {externalLinks.map(item => (
                 <li key={item.id}>
-                    <a href={item.elements.url.value} target='_blank' rel="noreferrer">
+                    <a href={item.elements.url.value} className='text-custom-yellow hover:text-custom-light-gray' target='_blank' rel="noreferrer">
                         {item.elements.label.value}
                     </a>
                 </li>
