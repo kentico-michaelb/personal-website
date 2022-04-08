@@ -5,7 +5,8 @@ import Media from './Media'
 
 export default function PostCard({ post }){
     const title = post.elements.title.value
-    const date = post.elements.date.value
+    const dateOptions = {year: 'numeric', month: 'long', day: 'numeric' }
+    const date = new Date(post.elements.date.value).toLocaleDateString('en-US', dateOptions)
     const image = post.elements.image.value[0]
 
     let url

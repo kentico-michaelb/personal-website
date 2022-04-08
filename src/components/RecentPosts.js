@@ -10,8 +10,14 @@ export default function RecentPosts(){
     const professionalPosts = allKontentItemExternalArticle.nodes
     const recentPosts = professionalPosts.concat(personalPosts)
 
-    recentPosts.sort((pro, per) => pro.elements.date.value - per.elements.date.value)
-    const latest = recentPosts.slice(0,3)
+    let ordered = recentPosts.sort((pro, per) => {
+        const a = new Date(pro.elements.date.value)
+        const b = new Date(per.elements.date.value)
+        const result = a-b
+
+        return result
+    }).reverse()
+    const latest = ordered.slice(0,3)
 
     return (
         <div className='mt-8'>

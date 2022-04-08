@@ -18,7 +18,7 @@ export const useAllPosts = () => {
                   }
                 }
                 date {
-                  value(formatString: "MMMM Do, YYYY")
+                  value
                 }
                 host {
                   value {
@@ -103,7 +103,7 @@ export const useAllPosts = () => {
                   }
                 }
                 date {
-                  value(formatString: "MMMM Do, YYYY")
+                  value
                 }
                 title {
                   value
